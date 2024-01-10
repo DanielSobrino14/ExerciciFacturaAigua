@@ -25,28 +25,27 @@ fun main() {
         5 -> println("Has sortit de l'aplicació. Fins Aviat!!")
     }
 }
-
 fun mostrarFactura() {
     val litresConsumits = llegirInt("Introdueix el número de litres que has consumit: ", 1, 1000)
     val costConsum = consumLitresAigua(litresConsumits)
     println("El cost del consum d'aigua és: $costConsum €")
 
     val esFamiliaNombrosa = familiaNombrosa()
-    if (esFamiliaNombrosa) {
-        val numMembres = membres()
-        val descompte = descompteFamilia(esFamiliaNombrosa, numMembres)
-        println("Descompte de $descompte% aplicat")
-    } else {
-        println("No sou una família nombrosa.")
-    }
-    val descompte = descompteBoSocial()
-    println("Descompte del $descompte% aplicat amb quota fixa de 3€.")
-
+    val descompteFamilia =
+        if (esFamiliaNombrosa) {
+            descompteFamilia(esFamiliaNombrosa, membres())
+        } else 0
+    val descompteBoSocial =
+        if (esFamiliaNombrosa) {
+            0
+        } else descompteBoSocial()
 
     println("Desglossament de la factura:")
     println("Quota fixa: 6€")
-    println("Consum de litres d'aigua: $litresConsumits litres y preu a pagar:$costConsum")
-    println("Cost total: $cost €")
+    println("Consum de litres d'aigua: $litresConsumits litres y preu a pagar: $costConsum")
+    println("Descompte Família Nombrosa: $descompteFamilia%")
+    println("Descompte Bo Social: $descompteBoSocial%")
+    println()
 }
 
 fun mostrarMenu(){
