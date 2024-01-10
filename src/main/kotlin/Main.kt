@@ -24,9 +24,8 @@ fun main() {
             println("No pots tenir el descompte Bo Social si ja tens descompte de família nombrosa.")
         } else {
             val boSocial = readBoolean("Té bo social (True / False) ?", "Error!!")
-            val litresConsumits = llegirInt("Introdueix el número de litres que has consumit: ", 1, 1000)
             val descompte = if (boSocial) {
-                descompteBoSocial(litresConsumits)
+                descompteBoSocial()
             } else {
                 0.0
             }

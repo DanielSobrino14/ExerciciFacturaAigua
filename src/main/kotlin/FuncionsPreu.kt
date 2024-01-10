@@ -22,13 +22,12 @@ fun descompteFamilia ( familia : Boolean, membres : Int ) : Int {
         descompte = membres * 10
         if ( descompte > 50)
             println("Nomes s'aplica fins 50% !")
-        descompte = 50
 
     }
     return descompte
 }
 
-fun descompteBoSocial(consumLitres: Int): Double {
+fun descompteBoSocial(): Double {
     return 80.0
 }
 
