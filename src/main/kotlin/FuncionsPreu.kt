@@ -1,9 +1,16 @@
-fun calcularCostoVariable(litres: Int): Double {
+
+fun consumLitresAigua(consumLitres: Int): Double {
+    val quotaFixa = 6.0
     return when {
-        litres < 50 -> 0.0
-        litres in 50..200 -> litres * 0.15
-        else -> litres * 0.30
+        consumLitres < 50 -> quotaFixa
+        consumLitres in 50..200 -> quotaFixa + (consumLitres * 0.15)
+        else -> quotaFixa + (consumLitres * 0.30)
     }
+}
+
+fun descompteBoSocial(litres: Int): Double {
+    val descompte = litres * 0.8
+    return litres - descompte
 }
 
 

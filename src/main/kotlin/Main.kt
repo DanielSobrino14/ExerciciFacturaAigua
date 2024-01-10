@@ -4,9 +4,10 @@ fun main () {
 
     when (opcio){
         1 -> mostrarFactura()
-        2 -> litresConsumits()
-        3 -> descomptesAplicables()
-        4 -> println("Has sortit de l'aplica")
+        2 -> consumLitresAigua()
+        3 -> descompteFamiliaNombrosa()
+        4 -> descompteBoSocial()
+        5 -> println("Has sortit de l'aplicació. Fins Aviat!!")
     }
 
 
@@ -27,8 +28,9 @@ fun mostrarMenu(){
     println(" A continuació calcularé el preu de la teva propera factura:")
     println("1. Mostro la Factura")
     println("2. Introduint numero de litres consumits")
-    println("3. Introduint els descomptes ")
-    println("4. Sortint de la aplicació")
+    println("3. Descompte Familia Nombrosa ")
+    println("4. Descompte per Bo Social")
+    println("5. Sortint de la aplicació")
 }
 
 
