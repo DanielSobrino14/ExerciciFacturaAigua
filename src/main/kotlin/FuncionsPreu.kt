@@ -1,6 +1,6 @@
-
+var quotaFixa = 6.0
 fun consumLitresAigua(consumLitres: Int): Double {
-    val quotaFixa = 6.0
+    quotaFixa= 6.0
     return when {
         consumLitres < 50 -> quotaFixa
         consumLitres in 50..200 -> quotaFixa + (consumLitres * 0.15)
@@ -31,7 +31,10 @@ fun descompteFamilia ( familia : Boolean, membres : Int ) : Int {
     return descompte
 }
 
-fun descompteBoSocial (): Int {
-    return 80
+fun descompteBoSocial(consumLitres: Int): Double {
+    quotaFixa = 3.0
+    val descuento = consumLitres * 0.8
+
+    return descuento
 }
 
