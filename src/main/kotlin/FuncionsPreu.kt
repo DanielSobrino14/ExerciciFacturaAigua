@@ -1,13 +1,12 @@
 var quotaFixa = 6.0
 
-fun consumLitresAigua(consumLitres: Int): Pair<Double, Double> {
-    quotaFixa = 6.0
+fun consumLitresAigua(consumLitres: Int): List<Double> {
     val costConsum = when {
         consumLitres < 50 -> 0.0
         consumLitres in 50..200 -> (consumLitres * 0.15)
         else -> (consumLitres * 0.30)
     }
-    return Pair(quotaFixa, costConsum)
+    return listOf(quotaFixa, costConsum)
 }
 
 fun familiaNombrosa(): Boolean {
@@ -29,6 +28,5 @@ fun descompteFamilia(familia: Boolean, membres: Int): Int {
 }
 
 fun descompteBoSocial(): Double {
-    quotaFixa= 3.0
     return 80.0
 }
