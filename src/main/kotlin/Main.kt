@@ -4,7 +4,7 @@ fun main() {
     when (opcio) {
         1 -> mostrarFactura()
         2 -> {
-            val litresConsumits = llegirInt("Introdueix el número de litres que has consumit: ", 0, 1000)
+            val litresConsumits = llegirInt("Introdueix el número de litres que has consumit: ", 1, 1000)
             val costFinal = consumLitresAigua(litresConsumits)
             println("El cost del consum d'aigua és: $costFinal €")
         }
@@ -27,23 +27,25 @@ fun main() {
 }
 
 fun mostrarFactura() {
-    val litresConsumits = llegirInt("Introdueix el número de litres consumits: ", 1, 1000)
-    var cost = 0.0
-    cost+= consumLitresAigua(litresConsumits)
+    val litresConsumits = llegirInt("Introdueix el número de litres que has consumit: ", 1, 1000)
+    val costConsum = consumLitresAigua(litresConsumits)
+    println("El cost del consum d'aigua és: $costConsum €")
 
     val esFamiliaNombrosa = familiaNombrosa()
     if (esFamiliaNombrosa) {
-        val numeroMembres = membres()
-        val descompte = descompteFamilia(esFamiliaNombrosa, numeroMembres)
-
+        val numMembres = membres()
+        val descompte = descompteFamilia(esFamiliaNombrosa, numMembres)
+        println("Descompte de $descompte% aplicat")
+    } else {
+        println("No sou una família nombrosa.")
     }
-
     val descompte = descompteBoSocial()
+    println("Descompte del $descompte% aplicat amb quota fixa de 3€.")
 
 
     println("Desglossament de la factura:")
     println("Quota fixa: 6€")
-    println("Consum de litres d'aigua: $litresConsumits litres")
+    println("Consum de litres d'aigua: $litresConsumits litres y preu a pagar:$costConsum")
     println("Cost total: $cost €")
 }
 
