@@ -31,5 +31,7 @@ fun descompteFamilia ( familia : Boolean, membres : Int ) : Int {
     return descompte
 }
 
+fun descompteBoSocial (){
 
+}
 
