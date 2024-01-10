@@ -36,28 +36,37 @@ fun main() {
         5 -> println("Has sortit de l'aplicació. Fins Aviat!!")
     }
 }
+
+
 fun mostrarFactura() {
     val litresConsumits = llegirInt("Introdueix el número de litres que has consumit: ", 1, 1000)
-    val costConsum = consumLitresAigua(litresConsumits)
+    var (quotaFixa, costConsum) = consumLitresAigua(litresConsumits)
 
     val esFamiliaNombrosa = familiaNombrosa()
-    val descompteFamilia =
-        if (esFamiliaNombrosa) {
-            descompteFamilia(esFamiliaNombrosa, membres())
-        } else 0
-    val boSocial = readBoolean("Té bono social (True / False) ?", "Error!!")
-    val descompteBoSocial = if (boSocial) {
-        costConsum * 0.2 + 3
-    } else {
-        0.0
+    val boSocial = readBoolean("Té bo social (True / False) ?", "Error!!")
+
+    var descompte = 0.0
+
+    if (esFamiliaNombrosa && !boSocial) {
+        val numMembres = membres()
+        descompte = descompteFamilia(true, numMembres).toDouble()
+        println("Descompte de $descompte% aplicat per ser família nombrosa.")
+    } else if (!esFamiliaNombrosa && boSocial) {
+        descompte = descompteBoSocial()
+        println("Descompte del $descompte% aplicat per Bo Social.")
+        quotaFixa = 3.0
     }
 
-    println("Desglossament de la factura:")
-    println("Quota fixa: ${if (boSocial) 3 else 6}€")
-    println("Consum de litres d'aigua: $litresConsumits litres y preu a pagar: $costConsum")
-    println("Descompte Família Nombrosa: $descompteFamilia%")
-    println("Descompte Bo Social: $descompteBoSocial%")
+    val costTotal = quotaFixa + costConsum
+    val descompteFinal = costTotal * (descompte / 100)
+    val costFinal = costTotal - descompteFinal
+
+    println("Detalls de la factura:")
+    println("Quota fixa: $quotaFixa €")
+    println("Consum de litres d'aigua: $costConsum €")
+    println("Cost total (incloent descomptes): $costFinal €")
 }
+
 
 fun mostrarMenu(){
     println(" Benvingut/da a la calculadora de preu de la teva factura de l'aigua")
