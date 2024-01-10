@@ -37,5 +37,5 @@ fun mostrarMenu(){
 fun demanarOpcio(): Int {
     return llegirInt("Introdueix el numero adecuat per fer la operació que necessitis ",
         1,
-        4)
+        5)
 }

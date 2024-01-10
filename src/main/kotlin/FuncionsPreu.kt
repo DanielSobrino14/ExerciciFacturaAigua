@@ -8,9 +8,27 @@ fun consumLitresAigua(consumLitres: Int): Double {
     }
 }
 
-fun descompteBoSocial(litres: Int): Double {
-    val descompte = litres * 0.8
-    return litres - descompte
+fun familiaNombrosa(): Boolean {
+
+    val nombrosaMonoparental = readBoolean("Sou familia nombrosa (True / False) ?", "Error!!")
+    return nombrosaMonoparental
+}
+
+fun membres(): Int {
+    val membres = llegirInt("Quants integrants té la familia ?", 1, 10)
+    return membres
+}
+
+fun descompteFamilia ( familia : Boolean, membres : Int ) : Int {
+    var descompte = 0
+    if (familia) {
+        descompte = membres * 10
+        if ( descompte > 50)
+            println("Nomes s'aplica fins 50% !")
+        descompte = 50
+
+    }
+    return descompte
 }
 
 
