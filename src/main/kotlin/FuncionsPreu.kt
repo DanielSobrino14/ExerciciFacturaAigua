@@ -1,20 +1,10 @@
-fun calcularPreu(litres: Int): Int {
-    var costVariable = 0
-    val quota = 6
-   when {
-       litres < 50 -> {
-           costVariable= quota
-       }
-       litres in 50..200 -> {
-           costVariable= quota * 0.15
-       }
-       litres > 200 -> {
-           costVariable= quota * 0.30
-       }
-   }
-    val preuFinal= costVariable + quota
-    return preuFinal
-
+fun calcularCostoVariable(litres: Int): Double {
+    return when {
+        litres < 50 -> 0.0
+        litres in 50..200 -> litres * 0.15
+        else -> litres * 0.30
+    }
 }
+
 
 
