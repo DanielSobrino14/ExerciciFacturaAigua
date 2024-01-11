@@ -16,12 +16,12 @@ fun llegirInt(pMessage : String, pMin : Int, pMax : Int) : Int{
         correctType = scan.hasNextInt()
 
         if(!correctType){
-            println("ERROR")
+            println("${colorRojo()}ERROR")
         }else{
             valor = scan.nextInt()
 
             if(valor < pMin || valor > pMax){
-                println("ERROR")
+                println("${colorRojo()}ERROR")
                 correctType = false
             }
         }

@@ -1,3 +1,21 @@
+fun colorAzul() = "\u001B[34m"
+fun colorRojo() = "\u001B[31m"
+fun colorLila() = "\u001B[35m"
+
+
+/**
+ * Este programa calcula y muestra el costo de una factura de agua basado en varios criterios
+ * como el consumo de agua, descuentos por familia numerosa y el descuento social (Bo Social).
+ *
+ * La aplicación proporciona un menú para que el usuario elija entre diferentes opciones para
+ * ver la factura, ingresar el consumo de agua, obtener descuentos y salir del programa.
+ *
+ * El cálculo del costo se realiza teniendo en cuenta el consumo de agua, la tarifa fija,
+ * los descuentos por ser familia numerosa y el descuento social.
+ *
+ * @author Daniel Sobrino
+ */
+
 fun main() {
     mostrarMenu()
     val opcio = demanarOpcio()
@@ -37,7 +55,9 @@ fun main() {
     }
 }
 
-
+/**
+ * Muestra los detalles de la factura, incluido el cálculo del costo final con descuentos aplicados.
+ */
 fun mostrarFactura() {
     val litresConsumits = llegirInt("Introdueix el número de litres que has consumit: ", 1, 1000)
     var (quotaFixa, costConsum) = consumLitresAigua(litresConsumits)
@@ -50,10 +70,10 @@ fun mostrarFactura() {
     if (esFamiliaNombrosa && !boSocial) {
         val numMembres = membres()
         descompte = descompteFamilia(true, numMembres).toDouble()
-        println("Descompte de $descompte% aplicat per ser família nombrosa.")
+        println(" ${colorLila()}Descompte de $descompte% aplicat per ser família nombrosa.")
     } else if (!esFamiliaNombrosa && boSocial) {
         descompte = descompteBoSocial()
-        println("Descompte del $descompte% aplicat per Bo Social.")
+        println(" ${colorLila()}Descompte del $descompte% aplicat per Bo Social.")
         quotaFixa = 3.0
     }
 
@@ -67,9 +87,11 @@ fun mostrarFactura() {
     println("Cost total (incloent descomptes): $costFinal €")
 }
 
-
+/**
+ * Muestra el menú de opciones para el usuario.
+ */
 fun mostrarMenu(){
-    println(" Benvingut/da a la calculadora de preu de la teva factura de l'aigua")
+    println(" ${colorAzul()}Benvingut/da a la calculadora de preu de la teva factura de l'aigua")
     println(" A continuació calcularé el preu de la teva propera factura:")
     println("1. Mostro la Factura")
     println("2. Introduint numero de litres consumits y preu pagat")
@@ -78,7 +100,11 @@ fun mostrarMenu(){
     println("5. Sortint de la aplicació")
 }
 
-
+/**
+ * Pide al usuario que ingrese una opción y devuelve la opción seleccionada.
+ *
+ * @return La opción seleccionada por el usuario.
+ */
 fun demanarOpcio(): Int {
     return llegirInt("Introdueix el numero adequat per fer la operació que necessitis ",
         1,
